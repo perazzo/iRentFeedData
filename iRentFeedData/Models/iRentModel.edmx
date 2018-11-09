@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="myirentc_rentModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ContactFName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactLName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactPhone" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyAdd" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyAdd2" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyCity" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyState" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CompanyZip" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="CompanyStartDate" Type="date" Nullable="false" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="LeadSourceCompanyID" Type="int" Nullable="false" />
+          <Property Name="MarketingSource" Type="int" Nullable="false" />
+          <Property Name="ChargeByACH" Type="int" />
+          <Property Name="CompanyPayFee" Type="int" />
+        </EntityType>
+        <EntityType Name="properties">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="PropertyAddress1" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PropertyAddress2" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PropertyCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyState" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PropertyZip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PropertyPhone" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Threshold" Type="int" Nullable="false" />
+          <Property Name="LateFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="LateFeeApplied" Type="int" Nullable="false" />
+          <Property Name="EvictionThreshold" Type="int" Nullable="false" />
+          <Property Name="SMSThreshold" Type="int" Nullable="false" />
+          <Property Name="BankFee" Type="int" Nullable="false" />
+          <Property Name="DailyLateFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PetFine" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="DailyPetFine" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Gas" Type="int" Nullable="false" />
+          <Property Name="Electricity" Type="int" Nullable="false" />
+          <Property Name="Water" Type="int" Nullable="false" />
+          <Property Name="Trash" Type="int" Nullable="false" />
+          <Property Name="TV" Type="int" Nullable="false" />
+          <Property Name="Internet" Type="int" Nullable="false" />
+          <Property Name="LaborRate" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="EvictionFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="SecurityDeposit" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="NRSecurityDeposit" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MaxLateFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="MinBalance" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ApplicationFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AdminFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Active" Type="int" />
+          <Property Name="PropertyEIN" Type="varchar" MaxLength="15" />
+          <Property Name="PropertyURL" Type="varchar" MaxLength="50" />
+          <Property Name="PropertyWebsite" Type="varchar" MaxLength="250" />
+          <Property Name="PropertyLongDescription" Type="text" />
+          <Property Name="PropertyOfficeHoursID" Type="int" />
+        </EntityType>
+        <EntityType Name="property_officehours">
+          <Key>
+            <PropertyRef Name="PropertyOfficeHoursID" />
+          </Key>
+          <Property Name="PropertyOfficeHoursID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MondayFridayOpenTime" Type="int" />
+          <Property Name="MondayFridayCloseTime" Type="int" />
+          <Property Name="SaturdayOpenTime" Type="int" />
+          <Property Name="SaturdayCloseTime" Type="int" />
+          <Property Name="SundayOpenTime" Type="int" />
+          <Property Name="SundayCloseTime" Type="int" />
+          <Property Name="PropertyID" Type="int" />
+        </EntityType>
+        <EntityType Name="propertytype">
+          <Key>
+            <PropertyRef Name="PropertyTypeID" />
+          </Key>
+          <Property Name="PropertyTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PropertyType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitada">
+          <Key>
+            <PropertyRef Name="UnitADAID" />
+          </Key>
+          <Property Name="UnitADAID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADA" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitfurnished">
+          <Key>
+            <PropertyRef Name="UnitFurnishedID" />
+          </Key>
+          <Property Name="UnitFurnishedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Furnished" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitlaundry">
+          <Key>
+            <PropertyRef Name="UnitLaundryID" />
+          </Key>
+          <Property Name="UnitLaundryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Laundry" Type="varchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitparking">
+          <Key>
+            <PropertyRef Name="UnitParkingID" />
+          </Key>
+          <Property Name="UnitParkingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parking" Type="varchar" MaxLength="35" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitpets">
+          <Key>
+            <PropertyRef Name="UnitPETSID" />
+          </Key>
+          <Property Name="UnitPETSID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PETS" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitphotos">
+          <Key>
+            <PropertyRef Name="UnitPhotosID" />
+          </Key>
+          <Property Name="UnitPhotosID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitTypeID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="UploadDate" Type="date" Nullable="false" />
+          <Property Name="MarketingFileTypeID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitresidencetype">
+          <Key>
+            <PropertyRef Name="UnitResidenceTypeID" />
+          </Key>
+          <Property Name="UnitResidenceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Residence" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="units">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="PropertyID" Type="int" Nullable="false" />
+          <Property Name="UnitTypeID" Type="int" Nullable="false" />
+          <Property Name="Occupied" Type="int" Nullable="false" />
+          <Property Name="VacantDate" Type="date" Nullable="false" />
+          <Property Name="Comment" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitsmoking">
+          <Key>
+            <PropertyRef Name="UnitSmokingID" />
+          </Key>
+          <Property Name="UnitSmokingID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Smoking" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unittypes">
+          <Key>
+            <PropertyRef Name="UnitTypeID" />
+          </Key>
+          <Property Name="UnitTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitType" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="UnitTypeDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PropertyID" Type="int" Nullable="false" />
+          <Property Name="UnitCharge" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ApplicationFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="AdminFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="IsFurnished" Type="int" />
+          <Property Name="IsSmokingAllowed" Type="int" />
+          <Property Name="IsWheelChairAccessible" Type="int" />
+          <Property Name="PetsAllowed" Type="int" />
+          <Property Name="MaxAllowedPeople" Type="int" />
+          <Property Name="LeaseDurationMonth" Type="varchar" MaxLength="100" />
+          <Property Name="ParkingType" Type="varchar" MaxLength="100" />
+          <Property Name="LaundryType" Type="varchar" MaxLength="100" />
+          <Property Name="SquareFootage" Type="varchar" MaxLength="100" />
+          <Property Name="UnitResidenceTypeID" Type="int" Nullable="false" />
+          <Property Name="TotalBedrooms" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TotalBathrooms" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="myirentc_rentModelStoreContainer">
+          <EntitySet Name="company" EntityType="Self.company" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="properties" EntityType="Self.properties" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="property_officehours" EntityType="Self.property_officehours" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="propertytype" EntityType="Self.propertytype" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitada" EntityType="Self.unitada" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitfurnished" EntityType="Self.unitfurnished" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitlaundry" EntityType="Self.unitlaundry" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitparking" EntityType="Self.unitparking" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitpets" EntityType="Self.unitpets" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitphotos" EntityType="Self.unitphotos" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitresidencetype" EntityType="Self.unitresidencetype" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="units" EntityType="Self.units" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unitsmoking" EntityType="Self.unitsmoking" Schema="myirentc_rent" store:Type="Tables" />
+          <EntitySet Name="unittypes" EntityType="Self.unittypes" Schema="myirentc_rent" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="myirentc_rentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactFName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactLName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactPhone" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyAdd" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyAdd2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyCity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyState" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyZip" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyStartDate" Type="DateTime" Nullable="false" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="LeadSourceCompanyID" Type="Int32" Nullable="false" />
+          <Property Name="MarketingSource" Type="Int32" Nullable="false" />
+          <Property Name="ChargeByACH" Type="Int32" />
+          <Property Name="CompanyPayFee" Type="Int32" />
+        </EntityType>
+        <EntityType Name="property">
+          <Key>
+            <PropertyRef Name="PropertyID" />
+          </Key>
+          <Property Name="PropertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="PropertyAddress1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyAddress2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyCity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyState" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyZip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyPhone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Threshold" Type="Int32" Nullable="false" />
+          <Property Name="LateFee" Type="Decimal" Nullable="false" />
+          <Property Name="LateFeeApplied" Type="Int32" Nullable="false" />
+          <Property Name="EvictionThreshold" Type="Int32" Nullable="false" />
+          <Property Name="SMSThreshold" Type="Int32" Nullable="false" />
+          <Property Name="BankFee" Type="Int32" Nullable="false" />
+          <Property Name="DailyLateFee" Type="Decimal" Nullable="false" />
+          <Property Name="PetFine" Type="Decimal" Nullable="false" />
+          <Property Name="DailyPetFine" Type="Decimal" Nullable="false" />
+          <Property Name="Gas" Type="Int32" Nullable="false" />
+          <Property Name="Electricity" Type="Int32" Nullable="false" />
+          <Property Name="Water" Type="Int32" Nullable="false" />
+          <Property Name="Trash" Type="Int32" Nullable="false" />
+          <Property Name="TV" Type="Int32" Nullable="false" />
+          <Property Name="Internet" Type="Int32" Nullable="false" />
+          <Property Name="LaborRate" Type="Decimal" Nullable="false" />
+          <Property Name="EvictionFee" Type="Decimal" Nullable="false" />
+          <Property Name="SecurityDeposit" Type="Decimal" Nullable="false" />
+          <Property Name="NRSecurityDeposit" Type="Decimal" Nullable="false" />
+          <Property Name="MaxLateFee" Type="Decimal" Nullable="false" />
+          <Property Name="MinBalance" Type="Decimal" Nullable="false" />
+          <Property Name="ApplicationFee" Type="Decimal" Nullable="false" />
+          <Property Name="AdminFee" Type="Decimal" Nullable="false" />
+          <Property Name="Active" Type="Int32" />
+          <Property Name="PropertyEIN" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyURL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyWebsite" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyLongDescription" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="PropertyOfficeHoursID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="property_officehours">
+          <Key>
+            <PropertyRef Name="PropertyOfficeHoursID" />
+          </Key>
+          <Property Name="PropertyOfficeHoursID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MondayFridayOpenTime" Type="Int32" />
+          <Property Name="MondayFridayCloseTime" Type="Int32" />
+          <Property Name="SaturdayOpenTime" Type="Int32" />
+          <Property Name="SaturdayCloseTime" Type="Int32" />
+          <Property Name="SundayOpenTime" Type="Int32" />
+          <Property Name="SundayCloseTime" Type="Int32" />
+          <Property Name="PropertyID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="propertytype">
+          <Key>
+            <PropertyRef Name="PropertyTypeID" />
+          </Key>
+          <Property Name="PropertyTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PropertyType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitada">
+          <Key>
+            <PropertyRef Name="UnitADAID" />
+          </Key>
+          <Property Name="UnitADAID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADA" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitfurnished">
+          <Key>
+            <PropertyRef Name="UnitFurnishedID" />
+          </Key>
+          <Property Name="UnitFurnishedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Furnished" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitlaundry">
+          <Key>
+            <PropertyRef Name="UnitLaundryID" />
+          </Key>
+          <Property Name="UnitLaundryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Laundry" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitparking">
+          <Key>
+            <PropertyRef Name="UnitParkingID" />
+          </Key>
+          <Property Name="UnitParkingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parking" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitpet">
+          <Key>
+            <PropertyRef Name="UnitPETSID" />
+          </Key>
+          <Property Name="UnitPETSID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PETS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitphoto">
+          <Key>
+            <PropertyRef Name="UnitPhotosID" />
+          </Key>
+          <Property Name="UnitPhotosID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitTypeID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UploadDate" Type="DateTime" Nullable="false" />
+          <Property Name="MarketingFileTypeID" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitresidencetype">
+          <Key>
+            <PropertyRef Name="UnitResidenceTypeID" />
+          </Key>
+          <Property Name="UnitResidenceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Residence" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyID" Type="Int32" Nullable="false" />
+          <Property Name="UnitTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Occupied" Type="Int32" Nullable="false" />
+          <Property Name="VacantDate" Type="DateTime" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unitsmoking">
+          <Key>
+            <PropertyRef Name="UnitSmokingID" />
+          </Key>
+          <Property Name="UnitSmokingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Smoking" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unittype">
+          <Key>
+            <PropertyRef Name="UnitTypeID" />
+          </Key>
+          <Property Name="UnitTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitType1" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UnitTypeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PropertyID" Type="Int32" Nullable="false" />
+          <Property Name="UnitCharge" Type="Decimal" Nullable="false" />
+          <Property Name="ApplicationFee" Type="Decimal" Nullable="false" />
+          <Property Name="AdminFee" Type="Decimal" Nullable="false" />
+          <Property Name="IsFurnished" Type="Int32" />
+          <Property Name="IsSmokingAllowed" Type="Int32" />
+          <Property Name="IsWheelChairAccessible" Type="Int32" />
+          <Property Name="PetsAllowed" Type="Int32" />
+          <Property Name="MaxAllowedPeople" Type="Int32" />
+          <Property Name="LeaseDurationMonth" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ParkingType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LaundryType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SquareFootage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UnitResidenceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TotalBedrooms" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalBathrooms" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="iRentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="companies" EntityType="Self.company" />
+          <EntitySet Name="properties" EntityType="Self.property" />
+          <EntitySet Name="property_officehours" EntityType="Self.property_officehours" />
+          <EntitySet Name="propertytypes" EntityType="Self.propertytype" />
+          <EntitySet Name="unitadas" EntityType="Self.unitada" />
+          <EntitySet Name="unitfurnisheds" EntityType="Self.unitfurnished" />
+          <EntitySet Name="unitlaundries" EntityType="Self.unitlaundry" />
+          <EntitySet Name="unitparkings" EntityType="Self.unitparking" />
+          <EntitySet Name="unitpets" EntityType="Self.unitpet" />
+          <EntitySet Name="unitphotos" EntityType="Self.unitphoto" />
+          <EntitySet Name="unitresidencetypes" EntityType="Self.unitresidencetype" />
+          <EntitySet Name="units" EntityType="Self.unit" />
+          <EntitySet Name="unitsmokings" EntityType="Self.unitsmoking" />
+          <EntitySet Name="unittypes" EntityType="Self.unittype" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="myirentc_rentModelStoreContainer" CdmEntityContainer="iRentEntities">
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="myirentc_rentModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactFName" ColumnName="ContactFName" />
+                <ScalarProperty Name="ContactLName" ColumnName="ContactLName" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="CompanyAdd" ColumnName="CompanyAdd" />
+                <ScalarProperty Name="CompanyAdd2" ColumnName="CompanyAdd2" />
+                <ScalarProperty Name="CompanyCity" ColumnName="CompanyCity" />
+                <ScalarProperty Name="CompanyState" ColumnName="CompanyState" />
+                <ScalarProperty Name="CompanyZip" ColumnName="CompanyZip" />
+                <ScalarProperty Name="CompanyStartDate" ColumnName="CompanyStartDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="LeadSourceCompanyID" ColumnName="LeadSourceCompanyID" />
+                <ScalarProperty Name="MarketingSource" ColumnName="MarketingSource" />
+                <ScalarProperty Name="ChargeByACH" ColumnName="ChargeByACH" />
+                <ScalarProperty Name="CompanyPayFee" ColumnName="CompanyPayFee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="properties">
+            <EntityTypeMapping TypeName="myirentc_rentModel.property">
+              <MappingFragment StoreEntitySet="properties">
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="PropertyAddress1" ColumnName="PropertyAddress1" />
+                <ScalarProperty Name="PropertyAddress2" ColumnName="PropertyAddress2" />
+                <ScalarProperty Name="PropertyCity" ColumnName="PropertyCity" />
+                <ScalarProperty Name="PropertyState" ColumnName="PropertyState" />
+                <ScalarProperty Name="PropertyZip" ColumnName="PropertyZip" />
+                <ScalarProperty Name="PropertyEmail" ColumnName="PropertyEmail" />
+                <ScalarProperty Name="PropertyPhone" ColumnName="PropertyPhone" />
+                <ScalarProperty Name="Threshold" ColumnName="Threshold" />
+                <ScalarProperty Name="LateFee" ColumnName="LateFee" />
+                <ScalarProperty Name="LateFeeApplied" ColumnName="LateFeeApplied" />
+                <ScalarProperty Name="EvictionThreshold" ColumnName="EvictionThreshold" />
+                <ScalarProperty Name="SMSThreshold" ColumnName="SMSThreshold" />
+                <ScalarProperty Name="BankFee" ColumnName="BankFee" />
+                <ScalarProperty Name="DailyLateFee" ColumnName="DailyLateFee" />
+                <ScalarProperty Name="PetFine" ColumnName="PetFine" />
+                <ScalarProperty Name="DailyPetFine" ColumnName="DailyPetFine" />
+                <ScalarProperty Name="Gas" ColumnName="Gas" />
+                <ScalarProperty Name="Electricity" ColumnName="Electricity" />
+                <ScalarProperty Name="Water" ColumnName="Water" />
+                <ScalarProperty Name="Trash" ColumnName="Trash" />
+                <ScalarProperty Name="TV" ColumnName="TV" />
+                <ScalarProperty Name="Internet" ColumnName="Internet" />
+                <ScalarProperty Name="LaborRate" ColumnName="LaborRate" />
+                <ScalarProperty Name="EvictionFee" ColumnName="EvictionFee" />
+                <ScalarProperty Name="SecurityDeposit" ColumnName="SecurityDeposit" />
+                <ScalarProperty Name="NRSecurityDeposit" ColumnName="NRSecurityDeposit" />
+                <ScalarProperty Name="MaxLateFee" ColumnName="MaxLateFee" />
+                <ScalarProperty Name="MinBalance" ColumnName="MinBalance" />
+                <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+                <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="PropertyEIN" ColumnName="PropertyEIN" />
+                <ScalarProperty Name="PropertyURL" ColumnName="PropertyURL" />
+                <ScalarProperty Name="PropertyWebsite" ColumnName="PropertyWebsite" />
+                <ScalarProperty Name="PropertyLongDescription" ColumnName="PropertyLongDescription" />
+                <ScalarProperty Name="PropertyOfficeHoursID" ColumnName="PropertyOfficeHoursID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="property_officehours">
+            <EntityTypeMapping TypeName="myirentc_rentModel.property_officehours">
+              <MappingFragment StoreEntitySet="property_officehours">
+                <ScalarProperty Name="PropertyOfficeHoursID" ColumnName="PropertyOfficeHoursID" />
+                <ScalarProperty Name="MondayFridayOpenTime" ColumnName="MondayFridayOpenTime" />
+                <ScalarProperty Name="MondayFridayCloseTime" ColumnName="MondayFridayCloseTime" />
+                <ScalarProperty Name="SaturdayOpenTime" ColumnName="SaturdayOpenTime" />
+                <ScalarProperty Name="SaturdayCloseTime" ColumnName="SaturdayCloseTime" />
+                <ScalarProperty Name="SundayOpenTime" ColumnName="SundayOpenTime" />
+                <ScalarProperty Name="SundayCloseTime" ColumnName="SundayCloseTime" />
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="propertytypes">
+            <EntityTypeMapping TypeName="myirentc_rentModel.propertytype">
+              <MappingFragment StoreEntitySet="propertytype">
+                <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+                <ScalarProperty Name="PropertyType1" ColumnName="PropertyType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitadas">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitada">
+              <MappingFragment StoreEntitySet="unitada">
+                <ScalarProperty Name="UnitADAID" ColumnName="UnitADAID" />
+                <ScalarProperty Name="ADA" ColumnName="ADA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitfurnisheds">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitfurnished">
+              <MappingFragment StoreEntitySet="unitfurnished">
+                <ScalarProperty Name="UnitFurnishedID" ColumnName="UnitFurnishedID" />
+                <ScalarProperty Name="Furnished" ColumnName="Furnished" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitlaundries">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitlaundry">
+              <MappingFragment StoreEntitySet="unitlaundry">
+                <ScalarProperty Name="UnitLaundryID" ColumnName="UnitLaundryID" />
+                <ScalarProperty Name="Laundry" ColumnName="Laundry" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitparkings">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitparking">
+              <MappingFragment StoreEntitySet="unitparking">
+                <ScalarProperty Name="UnitParkingID" ColumnName="UnitParkingID" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitpets">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitpet">
+              <MappingFragment StoreEntitySet="unitpets">
+                <ScalarProperty Name="UnitPETSID" ColumnName="UnitPETSID" />
+                <ScalarProperty Name="PETS" ColumnName="PETS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitphotos">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitphoto">
+              <MappingFragment StoreEntitySet="unitphotos">
+                <ScalarProperty Name="UnitPhotosID" ColumnName="UnitPhotosID" />
+                <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="MarketingFileTypeID" ColumnName="MarketingFileTypeID" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitresidencetypes">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitresidencetype">
+              <MappingFragment StoreEntitySet="unitresidencetype">
+                <ScalarProperty Name="UnitResidenceTypeID" ColumnName="UnitResidenceTypeID" />
+                <ScalarProperty Name="Residence" ColumnName="Residence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="units">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unit">
+              <MappingFragment StoreEntitySet="units">
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+                <ScalarProperty Name="Occupied" ColumnName="Occupied" />
+                <ScalarProperty Name="VacantDate" ColumnName="VacantDate" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unitsmokings">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unitsmoking">
+              <MappingFragment StoreEntitySet="unitsmoking">
+                <ScalarProperty Name="UnitSmokingID" ColumnName="UnitSmokingID" />
+                <ScalarProperty Name="Smoking" ColumnName="Smoking" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="unittypes">
+            <EntityTypeMapping TypeName="myirentc_rentModel.unittype">
+              <MappingFragment StoreEntitySet="unittypes">
+                <ScalarProperty Name="UnitTypeID" ColumnName="UnitTypeID" />
+                <ScalarProperty Name="UnitType1" ColumnName="UnitType" />
+                <ScalarProperty Name="UnitTypeDescription" ColumnName="UnitTypeDescription" />
+                <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+                <ScalarProperty Name="UnitCharge" ColumnName="UnitCharge" />
+                <ScalarProperty Name="ApplicationFee" ColumnName="ApplicationFee" />
+                <ScalarProperty Name="AdminFee" ColumnName="AdminFee" />
+                <ScalarProperty Name="IsFurnished" ColumnName="IsFurnished" />
+                <ScalarProperty Name="IsSmokingAllowed" ColumnName="IsSmokingAllowed" />
+                <ScalarProperty Name="IsWheelChairAccessible" ColumnName="IsWheelChairAccessible" />
+                <ScalarProperty Name="PetsAllowed" ColumnName="PetsAllowed" />
+                <ScalarProperty Name="MaxAllowedPeople" ColumnName="MaxAllowedPeople" />
+                <ScalarProperty Name="LeaseDurationMonth" ColumnName="LeaseDurationMonth" />
+                <ScalarProperty Name="ParkingType" ColumnName="ParkingType" />
+                <ScalarProperty Name="LaundryType" ColumnName="LaundryType" />
+                <ScalarProperty Name="SquareFootage" ColumnName="SquareFootage" />
+                <ScalarProperty Name="UnitResidenceTypeID" ColumnName="UnitResidenceTypeID" />
+                <ScalarProperty Name="TotalBedrooms" ColumnName="TotalBedrooms" />
+                <ScalarProperty Name="TotalBathrooms" ColumnName="TotalBathrooms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
